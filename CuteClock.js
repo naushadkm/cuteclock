@@ -79,11 +79,11 @@ CuteClock.prototype.isAlarmTime = function () {
 };
 CuteClock.prototype.alarmAlarm = function () {
     "use strict";
-    $(this.el).animate({
-      opacity: 0.2
-    }, 1000, "linear", function() {
-      console.log("DOne", this)
-    });
+    $(this.el).css({color: "red"});
+};
+CuteClock.prototype.stopAlarm = function () {
+    "use strict";
+    $(this.el).css({color: "#000"});
 };
 CuteClock.prototype.getTime = function (strTime) {
     "use strict";
