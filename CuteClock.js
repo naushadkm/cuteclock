@@ -14,14 +14,53 @@ function CuteClock() {
     this.alarmIsActive = false;
     this.alarmTime = null;
 
-    this.el = document.createElement('div');
+    this.buildMyUI();
+
     $('body').append(this.el);
     this.ticTic();
 }
 
+CuteClock.prototype.buildMyUI = function () {
+    "use strict";
+
+    this.el = document.createElement('div');
+    this.el.setAttribute("class", "cute-clock");
+
+    this.elInnerCircle = document.createElement('div');
+    this.elInnerCircle.setAttribute("class", "inner-circle");
+
+    this.elTime = document.createElement('div');
+    this.elTime.setAttribute("class", "time");
+
+    this.elDay = document.createElement('div');
+    this.elDay.setAttribute("class", "day");
+
+    this.elDate = document.createElement('div');
+    this.elDate.setAttribute("class", "date");
+
+    this.elInnerCircle.appendChild(this.elTime);
+    this.elInnerCircle.appendChild(this.elDay);
+    this.elInnerCircle.appendChild(this.elDate);
+
+    this.el.appendChild(this.elInnerCircle);
+};
+
+CuteClock.prototype.getDay = function () {
+    "use strict";
+    return ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][this.sysDate.getDay()];
+};
+
+CuteClock.prototype.getMonth = function () {
+    "use strict";
+    return ["January", "Febraury", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][this.sysDate.getMonth()];
+};
+
 CuteClock.prototype.display = function () {
     "use strict";
-    $(this.el).html(this.hour + ":" + this.minutes + ":" + this.seconds);
+    $(this.elTime).html(this.sysDate.toLocaleTimeString());
+    $(this.elDay).html(this.getDay());
+    $(this.elDate).html(this.sysDate.toLocaleDateString());
+
     //$(this.el).html(this.sysDate.toLocaleTimeString());
 };
 
@@ -53,11 +92,10 @@ CuteClock.prototype.ticTic = function () {
     this.minutes = this.prependZeroIfLesserThanTen(this.minutes);
     this.seconds = this.prependZeroIfLesserThanTen(this.seconds);
     this.display();
-    
-    var _this = this;
+
     window.setTimeout(function () {
-        _this.ticTic();
-    }, 1000);
+        this.ticTic();
+    }.bind(this), 1000);
     
     if (this.alarmIsActive && this.isAlarmTime()) {
         this.alarmAlarm();
