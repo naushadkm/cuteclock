@@ -117,7 +117,8 @@ CuteClock.prototype.isAlarmTime = function () {
 };
 CuteClock.prototype.alarmAlarm = function () {
     "use strict";
-    $(this.el).css({color: "red"});
+    //$(this.el).css({color: "red"});
+    $(this.el).find(".time").css({color: "red"});
 };
 CuteClock.prototype.stopAlarm = function () {
     "use strict";
