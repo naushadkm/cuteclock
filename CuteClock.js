@@ -11,16 +11,13 @@ function CuteClock() {
     this.hour = this.sysDate.getHours();
     this.minutes = this.sysDate.getMinutes();
     this.seconds = this.sysDate.getSeconds();
-    this.alarmIsActive = false;
-    this.alarmTime = null;
 
-    this.buildMyUI();
-
-    $('body').append(this.el);
+    this.buildClockUI();
+    
     this.ticTic();
 }
 
-CuteClock.prototype.buildMyUI = function () {
+CuteClock.prototype.buildClockUI = function () {
     "use strict";
 
     this.el = document.createElement('div');
@@ -43,6 +40,7 @@ CuteClock.prototype.buildMyUI = function () {
     this.elInnerCircle.appendChild(this.elDate);
 
     this.el.appendChild(this.elInnerCircle);
+    $('body').append(this.el);
 };
 
 CuteClock.prototype.getDay = function () {
@@ -122,7 +120,8 @@ CuteClock.prototype.alarmAlarm = function () {
 };
 CuteClock.prototype.stopAlarm = function () {
     "use strict";
-    $(this.el).css({color: "#000"});
+    //$(this.el).css({color: "#000"});
+    $(this.el).find(".time").css({color: "#fff"});
 };
 CuteClock.prototype.getTime = function (strTime) {
     "use strict";
