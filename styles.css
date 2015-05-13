@@ -1,0 +1,49 @@
+.cute-clock {
+    width: 202px;
+    height: 201px;
+    border-radius: 20px;
+    background: #2d2d35;
+    display: inline-block;
+    position: absolute;
+	bottom: 27px;
+	right: 54px;
+}
+.cute-clock .inner-circle {
+    border: 5px solid #1e1b22;
+    border-radius: 100px;
+    height: 178px;
+    width: 178px;
+    margin: 7px 0 0 7px;
+    text-align: center;
+    color: #fff;
+    font-family: Tahoma;
+}
+.cute-clock .inner-circle .time {
+    margin: 45px 0 0 0;
+    font-size: 20px;
+}
+.cute-clock .inner-circle .day {
+    margin: 30px 0 0 0;
+    font-size: 12px;
+}
+.cute-clock .inner-circle .date {
+    margin: 2px 0 0 0;
+    font-size: 12px;
+}
+.cute-clock .clock {
+    position: absolute;
+    right: 14px;
+    color: #fff;
+    top: 10px;
+}
+.cute-clock .alarm {
+    position: absolute;
+    right: 14px;
+    color: #fff;
+    top: 20px;
+}
+a#btn-cute-clock {
+	color: rgb(216, 216, 216);
+	text-decoration:none;
+	cursor: pointer;
+}
